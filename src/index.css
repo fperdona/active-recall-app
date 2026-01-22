@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme {
+  /* Fonte */
+  --font-sans: "Open Sans", sans-serif;
+}
+
+@layer utilities {
+  .text-2xs {
+    font-size: 10px;
+  }
+}
