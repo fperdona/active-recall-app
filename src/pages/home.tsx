@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { useState } from "react";
 import type { Deck } from "../types";
 
@@ -7,6 +8,7 @@ const mockDecks: Deck[] = [
 ]
 
 export function Home() {
+    const navigate = useNavigate()
     const [decks, setDecks] = useState<Deck[]>(mockDecks)
     const [newDeckName, setNewDeckName] = useState('')
 
@@ -49,6 +51,7 @@ export function Home() {
                 {decks.map(deck => (
                     <div
                         key={deck.id}
+                        onClick={() => navigate(`/deck/${deck.id}`)}
                         className="p-4 bg-card rounded-lg hover:bg-primary-light cursor-pointer transition-colors"
                     >
                         <h2 className="font-semibold text-text">{deck.name}</h2>
