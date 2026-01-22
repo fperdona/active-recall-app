@@ -1,9 +1,7 @@
+import { Home } from "./pages/home"
+
 function App() {
-  return (
-    <div>
-      <h1>Active Recall App</h1>
-    </div>
-  )
+  return <Home />
 }
 
 export default App

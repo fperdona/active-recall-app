@@ -1,12 +1,24 @@
 @import "tailwindcss";
 
 @theme {
-  /* Fonte */
-  --font-sans: "Open Sans", sans-serif;
+  /* Cores customizadas */
+  --color-primary: #7c3aed;
+  --color-primary-hover: #6d28d9;
+  --color-primary-light: #ede9fe;
+  
+  /* Estados */
+  --color-success: #22c55e;
+  --color-error: #ef4444;
+  --color-warning: #f59e0b;
+  
+  /* Neutras */
+  --color-background: #f3f4f6;
+  --color-card: #ffffff;
+  --color-text: #1f2937;
+  --color-text-muted: #6b7280;
 }
 
-@layer utilities {
-  .text-2xs {
-    font-size: 10px;
-  }
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: var(--color-background);
 }
