@@ -1,27 +1,15 @@
 import { useNavigate } from 'react-router-dom'
 import { useState } from "react";
-import type { Deck } from "../types";
-
-const mockDecks: Deck[] = [
-    { id: '1', name: 'JavaScript', cards: [] },
-    { id: '2', name: 'React', cards: [] }
-]
+import { useDecks } from "../contexts/decks/hooks/use-decks";
 
 export function Home() {
     const navigate = useNavigate()
-    const [decks, setDecks] = useState<Deck[]>(mockDecks)
+    const { decks, createDeck } = useDecks()
     const [newDeckName, setNewDeckName] = useState('')
 
     function handleCreateDeck() {
         if (!newDeckName.trim()) return
-
-        const newDeck: Deck = {
-            id: crypto.randomUUID(),
-            name: newDeckName,
-            cards: []
-        }
-
-        setDecks([...decks, newDeck])
+        createDeck(newDeckName)
         setNewDeckName('')
     }
 

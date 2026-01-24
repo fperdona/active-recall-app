@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 
-export function DeckPage() {
+export function Deck() {
     const { id } = useParams()
 
     return (
