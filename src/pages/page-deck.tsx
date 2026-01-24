@@ -67,7 +67,6 @@ export function Deck() {
                     deck.cards.map(card => (
                         <div key={card.id} className="bg-card p-4 rounded-lg">
                             <p className="font-medium text-text">{card.question}</p>
-                            <p className="text-text-muted text-sm mt-1">{card.answer}</p>
                         </div>
                     ))
                 )}

@@ -39,12 +39,28 @@ export function Home() {
                 {decks.map(deck => (
                     <div
                         key={deck.id}
-                        onClick={() => navigate(`/deck/${deck.id}`)}
-                        className="p-4 bg-card rounded-lg hover:bg-primary-light cursor-pointer transition-colors"
+                        className="p-4 bg-card rounded-lg flex items-center justify-between"
                     >
-                        <h2 className="font-semibold text-text">{deck.name}</h2>
-                        <p className="text-sm text-text-muted">{deck.cards.length} cards</p>
+                        {/* Parte clicável - vai pro deck */}
+                        <div
+                            onClick={() => navigate(`/deck/${deck.id}`)}
+                            className="cursor-pointer hover:opacity-70"
+                        >
+                            <h2 className="font-semibold text-text">{deck.name}</h2>
+                            <p className="text-sm text-text-muted">{deck.cards.length} cards</p>
+                        </div>
+
+                        {/* Botão estudar - só aparece se tiver cards */}
+                        {deck.cards.length > 0 && (
+                            <button
+                                onClick={() => navigate(`/deck/${deck.id}/study`)}
+                                className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-hover transition-colors cursor-pointer"
+                            >
+                                Estudar
+                            </button>
+                        )}
                     </div>
+
                 ))}
             </div>
         </div>
