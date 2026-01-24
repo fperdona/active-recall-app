@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, type ReactNode } from 'react'
+import { createContext, useContext, useState, useEffect, type ReactNode } from 'react'
 import type { Deck, Card } from '../models/deck'
 
 const mockDecks: Deck[] = [
@@ -16,7 +16,18 @@ type DecksContextType = {
 const DecksContext = createContext<DecksContextType | null>(null)
 
 export function DecksProvider({ children }: { children: ReactNode }) {
-  const [decks, setDecks] = useState<Deck[]>(mockDecks)
+  const [decks, setDecks] = useState<Deck[]>(() => {
+    const saved = localStorage.getItem('decks')
+    if (saved) {
+      return JSON.parse(saved)
+    }
+    return []  // começa vazio, sem mocks
+  })
+
+  useEffect(() => {
+    localStorage.setItem('decks', JSON.stringify(decks))
+  }, [decks])
+
 
   function createDeck(name: string) {
     const newDeck: Deck = {
